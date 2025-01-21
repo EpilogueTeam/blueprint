@@ -41,7 +41,7 @@ section(wide, padding:40) {
             title { "Admin Utils" }
             text { "A plugin to prevent Admins from cheating in creative mode." }
             link(href:"https://github.com/shield-break-net/adminutils") { button-secondary { "GitHub" } }
-            link(href:"https://github.com/shield-break-net/adminutils/blob/master/target/original-adminutils-0.0.1-alpha.jar") { button { "Download" } }
+            link(href:"https://github.com/shield-break-net/adminutils/raw/refs/heads/master/target/original-adminutils-0.0.1-alpha.jar") { button { "Download" } }
         }
         card(raised, hover-raise) {
             title { "Mekanism: Antimatter Calculator" }

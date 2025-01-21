@@ -55,7 +55,7 @@ section(wide, padding:40) {
             title { "Admin Utils" }
             text { "A plugin to prevent Admins from cheating in creative mode." }
             link(href:"https://github.com/shield-break-net/adminutils") { button-secondary { "GitHub" } }
-            link(href:"https://github.com/shield-break-net/adminutils/blob/master/target/original-adminutils-0.0.1-alpha.jar") { button { "Download" } }
+            link(href:"https://github.com/shield-break-net/adminutils/raw/refs/heads/master/target/original-adminutils-0.0.1-alpha.jar") { button { "Download" } }
         }
         card(raised, hover-raise) {
             title { "Mekanism: Antimatter Calculator" }
@@ -74,7 +74,7 @@ section(wide, padding:40) {
 section(wide, alternate, padding:40, marginBottom:20) {
     title(large, bold, centered, underline) { "Contact" }
     vertical(centered, gap:2) {
-        text { "Email: admin@freezy.me" }
+        text(color:white) { "Email: " link(href:"mailto:admin@freezy.me", color:#8b5cf6) { "admin@freezy.me" } }        
         text { "Discord: dattv" }
     }
 }

@@ -19,7 +19,7 @@ navbar(padding: 0) {
 section(wide, alternate, padding:40, marginBottom:20) {
     title(large, bold, centered, underline) { "Contact" }
     vertical(centered, gap:2) {
-        text { "Email: admin@freezy.me" }
+        text(color:white) { "Email: " link(href:"mailto:admin@freezy.me", color:#8b5cf6) { "admin@freezy.me" } }        
         text { "Discord: dattv" }
     }
 }
