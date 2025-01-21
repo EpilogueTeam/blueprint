@@ -20,9 +20,9 @@ section(wide, padding:40) {
     title(large, bold, centered) { "Projects" }
     grid(columns:3, responsive, gap:20) {
         card(raised, hover-raise) {
-            title { "Portfolio" }
+            title { "Old Portfolio" }
             text { "An ongoing developed website that shows projects!" }
-            link(href:"https://freezy.me") { button { "Visit Page" } }
+            link(href:"https://old.freezy.me") { button { "Visit Page" } }
             link(href:"https://github.com/DrFreezyYT/portfolio") { button-secondary { "GitHub" } }
         }
         card(raised, hover-raise) {
