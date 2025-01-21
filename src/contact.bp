@@ -1,0 +1,54 @@
+page(favicon:"/favicon.ico") {
+    title { "Blueprint - Contact" }
+    description { "A modern, declarative UI framework for building beautiful web interfaces" }
+    keywords { "blueprint, ui, framework, web development" }
+    author { "Blueprint Team" }
+}
+
+navbar {
+    horizontal {
+        link(href:index) { text(bold) { "Blueprint Live" } }
+        links {
+            link(href:index) { "Home" }
+            link(href:components) { "Components" }
+            link(href:about) { "About" }
+            link(href:contact) { "Contact" }
+        }
+    }
+}
+
+section(vertical, centered) {
+    card(width:100) {
+        title { "Contact Us" }
+        text(subtle) { "Get in touch with the Blueprint team" }
+        
+        vertical {
+            text(subtle) { "Name" }
+            input { "Your name" }
+            
+            text(subtle) { "Email" }
+            input { "you@example.com" }
+            
+            text(subtle) { "Message" }
+            textarea { "Type your message here..." }
+            
+            horizontal {
+                checkbox { }
+                text { "Subscribe to updates" }
+            }
+            
+            link(href:submit) { button { "Send Message (this does not do anything)" } }
+        }
+    }
+    
+    horizontal(centered) {
+        text(subtle) { "Or connect with us on social media:" }
+    }
+    
+    horizontal(centered) {
+        link(href:twitter) { button-compact { "𝕏" } }
+        link(href:facebook) { button-compact { "📘" } }
+        link(href:linkedin) { button-compact { "💼" } }
+        link(href:instagram) { button-compact { "📱" } }
+    }
+} 

@@ -1,0 +1,152 @@
+page(favicon:"/favicon.ico") {
+    title { "Blueprint - Components" }
+    description { "A modern, declarative UI framework for building beautiful web interfaces" }
+    keywords { "blueprint, ui, framework, web development" }
+    author { "Blueprint Team" }
+}
+
+navbar {
+    horizontal {
+        link(href:index) { text(bold) { "Blueprint Live" } }
+        links {
+            link(href:index) { "Home" }
+            link(href:components) { "Components" }
+            link(href:about) { "About" }
+            link(href:contact) { "Contact" }
+        }
+    }
+}
+
+section(wide, centered) {
+    title(huge) { "Modern UI Components" }
+    text(large, subtle) { "A showcase of beautiful, dark-themed UI elements" }
+}
+
+section(wide) {
+    title { "Form Elements" }
+    
+    grid(columns:2) {
+        card {
+            title { "Text Inputs" }
+            vertical {
+                text(subtle) { "Regular input:" }
+                input { "Type something..." }
+                
+                text(subtle) { "Textarea:" }
+                textarea { "Multiple lines of text..." }
+                
+                text(subtle) { "Select dropdown:" }
+                select {
+                    "Option 1"
+                    "Option 2"
+                    "Option 3"
+                }
+            }
+        }
+
+        card {
+            title { "Toggle Controls" }
+            vertical {
+                horizontal {
+                    checkbox { }
+                    text { "Enable notifications" }
+                }
+                
+                horizontal {
+                    radio { }
+                    text { "Light theme" }
+                }
+                
+                horizontal {
+                    radio { }
+                    text { "Dark theme" }
+                }
+                
+                horizontal {
+                    switch { }
+                    text { "Airplane mode" }
+                }
+            }
+        }
+    }
+}
+
+section(wide) {
+    title { "Progress Elements" }
+    
+    grid(columns:2) {
+        card {
+            title { "Progress Indicators" }
+            vertical {
+                text(subtle) { "Download progress:" }
+                progress(value:75, max:100) { }
+                
+                text(subtle) { "Volume control:" }
+                slider(value:50, min:0, max:100) { }
+            }
+        }
+
+        card {
+            title { "Status Indicators" }
+            vertical {
+                horizontal(spaced) {
+                    badge { "New" }
+                    badge { "Updated" }
+                    badge { "Popular" }
+                }
+                
+                alert { "✨ Welcome to the new UI Kit!" }
+                
+                horizontal {
+                    tooltip(data-tooltip:"Click to learn more") {
+                        text { "Hover me" }
+                    }
+                }
+            }
+        }
+    }
+}
+
+section(wide) {
+    title { "Button Variations" }
+    
+    grid(columns:3) {
+        card {
+            title { "Primary Actions" }
+            vertical {
+                button(prominent) { "Save Changes" }
+                button { "Cancel" }
+            }
+        }
+
+        card {
+            title { "Button Groups" }
+            horizontal {
+                button(prominent) { "Previous" }
+                button(prominent) { "Next" }
+            }
+        }
+
+        card {
+            title { "Icon Buttons" }
+            horizontal {
+                button(compact) { "👍" }
+                button(compact) { "❤️" }
+                button(compact) { "🔔" }
+            }
+        }
+    }
+}
+
+section(wide, alternate) {
+    title(centered) { "Ready to Build?" }
+    
+    vertical(centered) {
+        text(large, subtle) { "Start creating your own modern UI today" }
+        
+        horizontal(centered, spaced) {
+            button(prominent) { "Get Started" }
+            button(prominent) { "View Documentation" }
+        }
+    }
+}
