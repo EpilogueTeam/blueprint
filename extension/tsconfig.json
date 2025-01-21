@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "outDir": "out",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2020"],
+    "sourceMap": true
+  },
+  "include": [
+    "client/src",
+    "server/src"
+  ],
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ],
+  "references": [
+    { "path": "./client" },
+    { "path": "./server" }
+  ]
+} 

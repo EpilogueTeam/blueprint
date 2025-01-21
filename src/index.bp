@@ -1,0 +1,15 @@
+ page(favicon:"/favicon.ico") {
+    title { "Blueprint - Modern Web UI Language" }
+    description { "It works!" }
+    keywords { "blueprint, language, web, ui, modern" }
+    author { "Epilogue Team" }
+}
+
+
+section(wide, centered) {
+    vertical(centered,wide) {
+        title(huge) { "It works!" }
+        text(subtle, large) { "Start using Blueprint at src/" }
+        text(small) { "Find examples at examples/" }
+    }
+}

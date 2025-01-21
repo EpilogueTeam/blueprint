@@ -1,0 +1,49 @@
+{
+    "name": "blueprint-language",
+    "displayName": "Blueprint Language Support",
+    "description": "Language support for Blueprint layout files",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.75.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "main": "./client/out/extension.js",
+    "contributes": {
+        "languages": [{
+            "id": "blueprint",
+            "aliases": ["Blueprint", "blueprint"],
+            "extensions": [".bp"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "blueprint",
+            "scopeName": "source.blueprint",
+            "path": "./syntaxes/blueprint.tmLanguage.json"
+        }]
+    },
+    "activationEvents": [
+        "onLanguage:blueprint"
+    ],
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -b",
+        "watch": "tsc -b -w",
+        "compile:client": "tsc -b ./client/tsconfig.json",
+        "compile:server": "tsc -b ./server/tsconfig.json"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^8.1.0",
+        "vscode-languageserver": "^8.1.0",
+        "vscode-languageserver-textdocument": "^1.0.8"
+    },
+    "devDependencies": {
+        "@types/node": "^16.11.7",
+        "@types/vscode": "^1.75.0",
+        "@typescript-eslint/eslint-plugin": "^5.54.0",
+        "@typescript-eslint/parser": "^5.54.0",
+        "eslint": "^8.35.0",
+        "typescript": "^5.0.2"
+    }
+}

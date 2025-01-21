@@ -1,0 +1,136 @@
+{
+    "name": "Blueprint",
+    "scopeName": "source.blueprint",
+    "fileTypes": ["bp"],
+    "patterns": [
+      {
+        "include": "#comments"
+      },
+      {
+        "include": "#page-config"
+      },
+      {
+        "include": "#elements"
+      },
+      {
+        "include": "#properties"
+      },
+      {
+        "include": "#strings"
+      },
+      {
+        "include": "#punctuation"
+      }
+    ],
+    "repository": {
+      "comments": {
+        "match": "//.*$",
+        "name": "comment.line.double-slash.blueprint"
+      },
+      "page-config": {
+        "begin": "\\b(page)\\b",
+        "end": "(?=})",
+        "beginCaptures": {
+          "1": { "name": "entity.name.tag.blueprint" }
+        },
+        "patterns": [
+          {
+            "begin": "\\b(description|keywords|author)\\b\\s*\\{",
+            "end": "\\}",
+            "beginCaptures": {
+              "1": { "name": "entity.name.tag.blueprint" }
+            },
+            "patterns": [
+              { "include": "#strings" }
+            ]
+          },
+          {
+            "begin": "\\b(title)\\b\\s*\\{",
+            "end": "\\}",
+            "beginCaptures": {
+              "1": { "name": "entity.name.tag.title.blueprint" }
+            },
+            "patterns": [
+              { "include": "#strings" }
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "patterns": [
+          {
+            "match": "\\b(section|grid|horizontal|vertical|navbar|title|text|link|links|button|button-light|button-secondary|button-compact|card|badge|alert|tooltip|input|textarea|select|checkbox|radio|switch|list|table|progress|slider|media)\\b",
+            "name": "entity.name.tag.blueprint"
+          }
+        ]
+      },
+      "properties": {
+        "patterns": [
+          {
+            "match": "\\b(wide|centered|alternate|padding|margin|columns|responsive|gap|spaced|huge|large|small|tiny|bold|light|normal|italic|underline|strike|uppercase|lowercase|capitalize|subtle|accent|error|success|warning|hover-scale|hover-raise|hover-glow|hover-underline|hover-fade|focus-glow|focus-outline|focus-scale|active-scale|active-color|active-raise|mobile-stack|mobile-hide|tablet-wrap|tablet-hide|desktop-wide|desktop-hide)\\b",
+            "name": "support.type.property-name.blueprint"
+          },
+          {
+            "match": "(?<!:)(src|type|href|\\w+)\\s*:",
+            "captures": {
+              "1": { "name": "support.type.property-name.blueprint" }
+            }
+          },
+          {
+            "match": "(?<=type:)\\s*(img|video)\\b",
+            "name": "string.other.media-type.blueprint"
+          },
+          {
+            "match": "(?<=src:|href:)\\s*https?:\\/\\/[\\w\\-\\.]+(?:\\/[\\w\\-\\.\\/?=&%]*)?",
+            "name": "string.url.blueprint"
+          },
+          {
+            "match": "#[0-9a-fA-F]{3,6}",
+            "name": "constant.other.color.hex.blueprint"
+          },
+          {
+            "match": "\\b\\d+(%|px|rem|em)?\\b",
+            "name": "constant.numeric.blueprint"
+          }
+        ]
+      },
+      "strings": {
+        "patterns": [
+          {
+            "begin": "\"",
+            "end": "\"",
+            "name": "string.quoted.double.blueprint",
+            "patterns": [
+              {
+                "match": "\\\\.",
+                "name": "constant.character.escape.blueprint"
+              }
+            ]
+          },
+          {
+            "begin": "'",
+            "end": "'",
+            "name": "string.quoted.single.blueprint",
+            "patterns": [
+              {
+                "match": "\\\\.",
+                "name": "constant.character.escape.blueprint"
+              }
+            ]
+          }
+        ]
+      },
+      "punctuation": {
+        "patterns": [
+          {
+            "match": "[{}()]",
+            "name": "punctuation.section.blueprint"
+          },
+          {
+            "match": ",",
+            "name": "punctuation.separator.blueprint"
+          }
+        ]
+      }
+    }
+  }

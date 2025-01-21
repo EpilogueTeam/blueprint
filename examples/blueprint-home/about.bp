@@ -1,0 +1,57 @@
+page(favicon:"/favicon.ico") {
+    title { "Blueprint - About" }
+    description { "A modern, declarative UI framework for building beautiful web interfaces" }
+    keywords { "blueprint, ui, framework, web development" }
+    author { "Blueprint Team" }
+}
+
+navbar {
+    horizontal {
+        link(href:index) { text(bold) { "Blueprint Live" } }
+        links {
+            link(href:index) { "Home" }
+            link(href:components) { "Components" }
+            link(href:about) { "About" }
+            link(href:contact) { "Contact" }
+        }
+    }
+}
+
+section(wide) {
+    title { "About Blueprint" }
+    text(subtle) { "A modern UI compiler with live reload support" }
+    
+    vertical {
+        card {
+            title { "Our Story" }
+            text { "Blueprint was created to make UI development faster and more enjoyable. With live reload support, you can see your changes instantly without manual refreshing." }
+        }
+        
+        card {
+            title { "Features" }
+            vertical {
+                horizontal {
+                    badge { "New" }
+                    text { "Live Reload Support" }
+                }
+                horizontal {
+                    badge { "✨" }
+                    text { "Modern Dark Theme" }
+                }
+                horizontal {
+                    badge { "🚀" }
+                    text { "Fast Development" }
+                }
+            }
+        }
+        
+        card {
+            title { "Get Started" }
+            text { "Try Blueprint now with our development server:" }
+            codeblock {
+                "node dev.js --live --readable"
+            }
+            link(text:"Get Help") { "Contact" }
+        }
+    }
+} 
