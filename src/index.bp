@@ -1,15 +1,50 @@
- page(favicon:"/favicon.ico") {
-    title { "Blueprint - Modern Web UI Language" }
-    description { "It works!" }
-    keywords { "blueprint, language, web, ui, modern" }
-    author { "Epilogue Team" }
+page(favicon:"/favicon.ico") {
+    title { "Blueprint - Modern UI Framework" }
+    description { "A modern, declarative UI framework for building beautiful web interfaces" }
+    keywords { "blueprint, ui, framework, web development" }
+    author { "Blueprint Team" }
 }
 
+navbar {
+    horizontal {
+        link(href:index) { text(bold) { "Blueprint Live" } }
+        links {
+            link(href:index) { "Home" }
+            link(href:components) { "Components" }
+            link(href:about) { "About" }
+            link(href:contact) { "Contact" }
+        }
+    }
+}
 
 section(wide, centered) {
     vertical(centered,wide) {
-        title(huge) { "It works!" }
-        text(subtle, large) { "Start using Blueprint at src/" }
-        text(small) { "Find examples at examples/" }
+        title(huge) { "Welcome to blueprint" }
+        text(subtle) { "You can now edit files in the src/ directory" }
+    }
+    
+    horizontal(centered) {
+        link(href:index) { button { "Get started" } }
+        link(href:about) { button-light { "About" } }
     }
 }
+
+section(wide) {
+    grid(columns:3) {
+        card {
+            title { "Live Reloads" }
+            text { "Changes appear instantly in your browser" }
+            link(href:https://example.com) { button-secondary { "Try Blueprint" } }
+        }
+        card {
+            title { "Modern Design" }
+            text { "Beautiful dark theme with consistent styling" }
+            link(href:about) { button-secondary { "About" } }
+        }
+        card {
+            title { "Easy to Use" }
+            text { "Simple, declarative syntax for building UIs" }
+            link(href:contact) { button-secondary { "Contact" } }
+        }
+    }
+} 
