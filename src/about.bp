@@ -1,0 +1,30 @@
+page(favicon:"/favicon.ico") {
+    title { "DaTTV About Me" }
+    description { "A personal portfolio showcasing projects and skills." }    
+    keywords { "freezy, minipandi, mini_pandi, dattv, dagermanguy, blueprint, ui, framework, web development" }
+    author { "Freezy, DaTTV" }
+}
+
+navbar(padding: 0) {
+    horizontal(centered, spaced) {
+        link(href:index) { text(bold, uppercase) { "DaTTV" } }
+        links {
+            link (href:about) { button { "About Me" } }
+            link(href:projects) { button { "Projects" } }
+            link(href:contact) { button { "Contact" } }
+        }
+    }
+}
+
+section(wide, alternate, padding:40) {
+    title(large, bold, centered) { "About Me" }
+    card(subtle, centered) {
+        "I am a dedicated Minecraft and backend developer with a passion for creating innovative solutions and pushing the boundaries of what's possible in both gaming and software development."
+    }
+}
+
+horizontal(centered, backgroundColor: #7e22ce, padding:10) {
+    text {
+        "© 2019-2025 DaTTV. All rights reserved."
+    }
+}

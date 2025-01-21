@@ -1,0 +1,31 @@
+page(favicon:"/favicon.ico") {
+    title { "DaTTV Contact" }
+    description { "A personal portfolio showcasing projects and skills." }    
+    keywords { "freezy, minipandi, mini_pandi, dattv, dagermanguy, blueprint, ui, framework, web development" }
+    author { "Freezy, DaTTV" }
+}
+
+navbar(padding: 0) {
+    horizontal(centered, spaced) {
+        link(href:index) { text(bold, uppercase) { "DaTTV" } }
+        links {
+            link (href:about) { button { "About Me" } }
+            link(href:projects) { button { "Projects" } }
+            link(href:contact) { button { "Contact" } }
+        }
+    }
+}
+
+section(wide, alternate, padding:40, marginBottom:20) {
+    title(large, bold, centered, underline) { "Contact" }
+    vertical(centered, gap:2) {
+        text { "Email: admin@freezy.me" }
+        text { "Discord: dattv" }
+    }
+}
+
+horizontal(centered, backgroundColor: #7e22ce, padding:10) {
+    text {
+        "© 2019-2025 DaTTV. All rights reserved."
+    }
+}

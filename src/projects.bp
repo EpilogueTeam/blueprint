@@ -1,5 +1,5 @@
 page(favicon:"/favicon.ico") {
-    title { "DaTTV Portfolio" }
+    title { "DaTTV Projects" }
     description { "A personal portfolio showcasing projects and skills." }    
     keywords { "freezy, minipandi, mini_pandi, dattv, dagermanguy, blueprint, ui, framework, web development" }
     author { "Freezy, DaTTV" }
@@ -13,20 +13,6 @@ navbar(padding: 0) {
             link(href:projects) { button { "Projects" } }
             link(href:contact) { button { "Contact" } }
         }
-    }
-}
-
-section(wide, centered, padding:40) {
-    vertical(centered, wide) {
-        title(huge, bold, color:#ffffff, marginTop: 60) { "Welcome to DaTTV Portfolio" }
-        card(subtle, large, color:#8b949e) { "A showcase of my projects and skills in web development and Minecraft modding." }
-    }
-}
-
-section(wide, alternate, padding:40) {
-    title(large, bold, centered) { "About Me" }
-    card(subtle, centered) {
-        "I am a dedicated Minecraft and backend developer with a passion for creating innovative solutions and pushing the boundaries of what's possible in both gaming and software development."
     }
 }
 
@@ -68,14 +54,6 @@ section(wide, padding:40) {
             text { "A Velocity Plugin that reconnects you to a server after it restarts." }
             link(href:"https://github.com/Freezy-Studios/ServerReconnect") { button-secondary { "GitHub" } }
         }
-    }
-}
-
-section(wide, alternate, padding:40, marginBottom:20) {
-    title(large, bold, centered, underline) { "Contact" }
-    vertical(centered, gap:2) {
-        text { "Email: admin@freezy.me" }
-        text { "Discord: dattv" }
     }
 }
 
