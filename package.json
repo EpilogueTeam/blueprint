@@ -4,7 +4,7 @@
   "description": "A modern UI component compiler with live reload support",
   "main": "lib/BlueprintBuilder.js",
   "scripts": {
-    "build": "node lib/build.js --debug && echo \"Built successfully! You can now deploy the dist folder.\" && exit 0",
+    "build": "node lib/build.js && echo \"Built successfully! You can now deploy the dist folder.\" && exit 0",
     "dev": "node lib/dev-server.js --live"
   },
   "dependencies": {
