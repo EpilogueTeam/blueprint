@@ -17,6 +17,12 @@ npm run dev    # Starts server at http://localhost:3000
 npm run build  # Generates production files
 ```
 
+## Roadmap 🛣️
+
+- [ ] Blueprint server blocks
+- [ ] Blueprint live editor
+- [ ] Blueprint components
+
 ## Why Blueprint? ✨
 
 - 🎯 SwiftUI-like syntax for web development
