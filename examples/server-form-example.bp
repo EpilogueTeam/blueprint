@@ -1,0 +1,163 @@
+page(favicon:"/favicon.ico") {
+    title { "Blueprint - Server Form Example" }
+    description { "Example of server-side form processing in Blueprint" }
+    keywords { "blueprint, javascript, server, api, form" }
+    author { "Blueprint Team" }
+}
+
+navbar {
+    horizontal {
+        link(href:index) { text(bold) { "Blueprint" } }
+        links {
+            link(href:index) { "Home" }
+            link(href:examples) { "Examples" }
+            link(href:docs) { "Docs" }
+        }
+    }
+}
+
+section(wide, centered) {
+    vertical(centered) {
+        title(huge) { "Server-Side Form Processing" }
+        text { "Demonstration of server-side form handling with Blueprint" }
+    }
+}
+
+section(wide) {
+    title { "Contact Form Example" }
+    
+    vertical(centered) {
+        card(raised) {
+            title { "Submit a Message" }
+            text { "Fill out the form below to submit a message to the server." }
+            
+            vertical {
+                text(bold) { "Your Name" }
+                input(id:user_name) { "John Doe" }
+                
+                text(bold) { "Your Email" }
+                input(id:user_email) { "john@example.com" }
+                
+                text(bold) { "Your Message" }
+                textarea(id:user_message) { "Hello from Blueprint!" }
+                
+                // Display the server response
+                text(id:form_result) { "" }
+                
+                button(id:submit_form) { 
+                    "Submit Form" 
+                    
+                    // Server block with parameters specifying which input values to include
+                    @server(user_name, user_email, user_message) {
+                        console.log("Form submission received:");
+                        console.log("Name:", user_name);
+                        console.log("Email:", user_email);
+                        console.log("Message:", user_message);
+                        
+                        // Validate inputs
+                        const errors = [];
+                        
+                        if (!user_name || user_name.length < 2) {
+                            errors.push("Name is too short");
+                        }
+                        
+                        if (!user_email || !user_email.includes('@')) {
+                            errors.push("Invalid email address");
+                        }
+                        
+                        if (!user_message || user_message.length < 5) {
+                            errors.push("Message is too short");
+                        }
+                        
+                        // Return error message if validation fails
+                        if (errors.length > 0) {
+                            return res.status(400).json({
+                                form_result: "Error: " + errors.join(", ")
+                            });
+                        }
+                        
+                        // Process the form (in a real app, this might save to a database)
+                        const timestamp = new Date().toISOString();
+                        
+                        // Return success response that will update the form_result element
+                        return res.status(200).json({
+                            form_result: `Thank you, ${user_name}! Your message was received at ${timestamp}.`
+                        });
+                    }
+                }
+            }
+        }
+    }
+}
+
+section(wide) {
+    title { "User Registration Example" }
+    
+    vertical(centered) {
+        card(raised) {
+            title { "Register a New Account" }
+            text { "Fill out the form below to register a new account." }
+            
+            vertical {
+                text(bold) { "Username" }
+                input(id:username) { "newuser123" }
+                
+                text(bold) { "Email" }
+                input(id:email) { "newuser@example.com" }
+                
+                text(bold) { "Password" }
+                input(id:password) { "password123" }
+                
+                text(bold) { "Confirm Password" }
+                input(id:confirm_password) { "password123" }
+                
+                // Display the registration status
+                text(id:registration_status) { "" }
+                
+                button(id:register_user) { 
+                    "Register" 
+                    
+                    @server(username, email, password, confirm_password) {
+                        console.log("Registration request for username:", username);
+                        
+                        // Validate username
+                        if (!username || username.length < 4) {
+                            return res.status(400).json({
+                                registration_status: "Error: Username must be at least 4 characters"
+                            });
+                        }
+                        
+                        // Validate email
+                        if (!email || !email.includes('@')) {
+                            return res.status(400).json({
+                                registration_status: "Error: Invalid email address"
+                            });
+                        }
+                        
+                        // Validate password
+                        if (!password || password.length < 8) {
+                            return res.status(400).json({
+                                registration_status: "Error: Password must be at least 8 characters"
+                            });
+                        }
+                        
+                        // Check password matching
+                        if (password !== confirm_password) {
+                            return res.status(400).json({
+                                registration_status: "Error: Passwords do not match"
+                            });
+                        }
+                        
+                        // In a real app, this would create the user account
+                        const userId = Math.floor(Math.random() * 10000);
+                        
+                        // Return success response
+                        return res.status(200).json({
+                            registration_status: `Success! User ${username} registered with ID #${userId}`
+                        });
+                    }
+                }
+            }
+        }
+    }
+} 

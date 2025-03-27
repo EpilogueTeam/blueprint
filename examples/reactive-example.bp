@@ -1,0 +1,190 @@
+page(favicon:"/favicon.ico") {
+    title { "Blueprint - Reactive Example" }
+    description { "Example of reactive values in Blueprint" }
+    keywords { "blueprint, javascript, reactive, state" }
+    author { "Blueprint Team" }
+}
+
+navbar {
+    horizontal {
+        link(href:index) { text(bold) { "Blueprint" } }
+        links {
+            link(href:index) { "Home" }
+            link(href:examples) { "Examples" }
+            link(href:docs) { "Docs" }
+        }
+    }
+}
+
+section(wide, centered) {
+    vertical(centered) {
+        title(huge) { "Reactive Values Demo" }
+        text { "Demonstration of reactive state management in Blueprint" }
+    }
+}
+
+section(wide) {
+    title { "Counter Example" }
+    
+    vertical(centered) {
+        // Notice the ID uses underscore format. - is not allowed
+        text(id:counter_value) { "0" }
+        
+        horizontal(centered) {
+            button-secondary(id:decrease_btn) { 
+                "Decrease" 
+                
+                @client {
+                    // Use the reactive counter_value with numberValue
+                    const currentValue = counter_value.numberValue;
+                    counter_value.setNumber(currentValue - 1);
+                    console.log("Counter decreased to", currentValue - 1);
+                }
+            }
+            
+            button(id:increase_btn) { 
+                "Increase" 
+                
+                @client {
+                    // Use the reactive counter_value with numberValue
+                    const currentValue = counter_value.numberValue;
+                    counter_value.setNumber(currentValue + 1);
+                    console.log("Counter increased to", currentValue + 1);
+                }
+            }
+        }
+    }
+}
+
+section(wide) {
+    title { "Color Changer with Reactive Elements" }
+    
+    vertical(centered) {
+        // Element with explicit ID that will be styled
+        card(id:color_target, raised) {
+            title { "Change My Background" }
+            text { "Click the buttons below to change my background color" }
+        }
+        
+        // Display the current color
+        text(subtle, id:color_display) { "Current color: None" }
+        
+        horizontal(centered) {
+            button-secondary(id:red_btn) { 
+                "Red" 
+                
+                @client {
+                    // Using reactive methods
+                    color_target.setStyle("backgroundColor", "#e74c3c");
+                    color_display.set("Current color: Red");
+                }
+            }
+            
+            button-secondary(id:green_btn) { 
+                "Green" 
+                
+                @client {
+                    // Using reactive methods
+                    color_target.setStyle("backgroundColor", "#2ecc71");
+                    color_display.set("Current color: Green");
+                }
+            }
+            
+            button-secondary(id:blue_btn) { 
+                "Blue" 
+                
+                @client {
+                    // Using reactive methods
+                    color_target.setStyle("backgroundColor", "#3498db");
+                    color_display.set("Current color: Blue");
+                }
+            }
+            
+            button-secondary(id:reset_btn) { 
+                "Reset" 
+                
+                @client {
+                    // Using reactive methods
+                    color_target.setStyle("backgroundColor", "");
+                    color_display.set("Current color: None");
+                }
+            }
+        }
+    }
+}
+
+section(wide) {
+    title { "Data Types Example" }
+    
+    vertical(centered) {
+        horizontal(centered) {
+            vertical {
+                text(bold) { "Number:" }
+                text(id:number_display) { "42" }
+            }
+            
+            vertical {
+                text(bold) { "Text:" }
+                text(id:text_display) { "Hello Blueprint" }
+            }
+            
+            vertical {
+                text(bold) { "Boolean:" }
+                text(id:boolean_display) { "true" }
+            }
+        }
+        
+        horizontal(centered) {
+            button-secondary(id:modify_values_btn) { 
+                "Modify Values" 
+                
+                @client {
+                    // Use type-specific methods
+                    number_display.setNumber(number_display.numberValue * 2);
+                    text_display.set(text_display.value + "!");
+                    boolean_display.set(!boolean_display.booleanValue);
+                    
+                    console.log("Number value:", number_display.numberValue);
+                    console.log("Text value:", text_display.textValue);
+                    console.log("Boolean value:", boolean_display.booleanValue);
+                }
+            }
+            
+            button-secondary(id:reset_values_btn) { 
+                "Reset Values" 
+                
+                @client {
+                    number_display.setNumber(42);
+                    text_display.set("Hello Blueprint");
+                    boolean_display.set("true");
+                }
+            }
+        }
+    }
+}
+
+section(wide) {
+    title { "Subscription Example" }
+    
+    vertical(centered) {
+        // Input and subscribed elements
+        input(id:user_input) { "Type something..." }
+        
+        text(bold) { "Live Preview:" }
+        text(id:preview_output) { "Type something..." }
+        
+        // Add a client block to handle typing
+        @client {
+            // Set up the input to update the preview on input
+            user_input.element.addEventListener("input", function(e) {
+                // Use the reactive API to update the preview
+                preview_output.set(e.target.value);
+            });
+            
+            // Example of subscription - will log changes to the console
+            preview_output.subscribe(function(newValue) {
+                console.log("Preview content changed to:", newValue);
+            });
+        }
+    }
+} 
