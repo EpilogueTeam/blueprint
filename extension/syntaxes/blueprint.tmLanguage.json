@@ -19,6 +19,9 @@
         "include": "#strings"
       },
       {
+        "include": "#script-blocks"
+      },
+      {
         "include": "#punctuation"
       }
     ],
@@ -64,6 +67,24 @@
           }
         ]
       },
+      "script-blocks": {
+        "patterns": [
+          {
+            "begin": "@(client|server)\\s*\\{",
+            "end": "\\}",
+            "beginCaptures": {
+              "0": { "name": "keyword.control.blueprint" },
+              "1": { "name": "entity.name.function.blueprint" }
+            },
+            "contentName": "source.js.embedded.blueprint",
+            "patterns": [
+              {
+                "include": "source.js"
+              }
+            ]
+          }
+        ]
+      },
       "properties": {
         "patterns": [
           {
@@ -71,7 +92,7 @@
             "name": "support.type.property-name.blueprint"
           },
           {
-            "match": "(?<!:)(src|type|href|\\w+)\\s*:",
+            "match": "(?<!:)(src|type|href|id|\\w+)\\s*:",
             "captures": {
               "1": { "name": "support.type.property-name.blueprint" }
             }

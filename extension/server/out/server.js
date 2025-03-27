@@ -38,6 +38,8 @@ const elements = [
     'card', 'badge', 'alert', 'tooltip', 'input', 'textarea', 'select',
     'checkbox', 'radio', 'switch', 'list', 'table', 'progress', 'slider'
 ];
+// Script block types
+const scriptBlocks = ['client', 'server'];
 // Single instance elements
 const singleElements = ['page', 'navbar'];
 // Blueprint properties
@@ -103,6 +105,65 @@ connection.onCompletion((textDocumentPosition) => {
                         newText: ''
                     }]
             }];
+    }
+    // Check for @client or @server block completion
+    if (linePrefix.trim() === '@' || linePrefix.trim().startsWith('@')) {
+        return scriptBlocks.map(blockType => ({
+            label: `@${blockType}`,
+            kind: node_1.CompletionItemKind.Snippet,
+            insertText: `@${blockType} {\n    $1\n}`,
+            insertTextFormat: node_1.InsertTextFormat.Snippet,
+            documentation: `Create a ${blockType} script block`
+        }));
+    }
+    // After an @client or @server block opening brace, suggest JS snippets
+    const scriptBlockMatch = /@(client|server)\s*{\s*$/.exec(linePrefix);
+    if (scriptBlockMatch) {
+        const blockType = scriptBlockMatch[1];
+        const jsSnippets = [];
+        if (blockType === 'client') {
+            jsSnippets.push({
+                label: 'element.set',
+                kind: node_1.CompletionItemKind.Method,
+                insertText: '${1:elementId}.set("${2:new value}");',
+                insertTextFormat: node_1.InsertTextFormat.Snippet,
+                documentation: 'Set the content of an element'
+            }, {
+                label: 'console.log',
+                kind: node_1.CompletionItemKind.Method,
+                insertText: 'console.log("${1:message}");',
+                insertTextFormat: node_1.InsertTextFormat.Snippet,
+                documentation: 'Log a message to the console'
+            }, {
+                label: 'DOM event handling',
+                kind: node_1.CompletionItemKind.Snippet,
+                insertText: 'e.preventDefault();\n${1}',
+                insertTextFormat: node_1.InsertTextFormat.Snippet,
+                documentation: 'Prevent default action of event'
+            });
+        }
+        else if (blockType === 'server') {
+            jsSnippets.push({
+                label: 'element.set',
+                kind: node_1.CompletionItemKind.Method,
+                insertText: '${1:elementId}.set(${2:newValue});',
+                insertTextFormat: node_1.InsertTextFormat.Snippet,
+                documentation: 'Update element value from server'
+            }, {
+                label: 'element.value',
+                kind: node_1.CompletionItemKind.Property,
+                insertText: 'const value = ${1:elementId}.value;',
+                insertTextFormat: node_1.InsertTextFormat.Snippet,
+                documentation: 'Get the current value of an element'
+            }, {
+                label: 'fetch data',
+                kind: node_1.CompletionItemKind.Snippet,
+                insertText: 'const response = await fetch("${1:url}");\nconst data = await response.json();\n${2}',
+                insertTextFormat: node_1.InsertTextFormat.Snippet,
+                documentation: 'Fetch data from an API'
+            });
+        }
+        return jsSnippets;
     }
     // Inside page block
     if (text.includes('page {') && !text.includes('}')) {
